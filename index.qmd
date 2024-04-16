@@ -1,0 +1,29 @@
+---
+format: html
+include-in-header:
+  - text: |
+      <style>
+      p {
+        text-align: center;
+      }
+      </style>
+---
+
+[![](./img/branding.002.png){width="50%" fig-align="center"}](https://www.jvcasillas.com)
+
+[{{< fa envelope size=5x >}}](mailto:joseph.casillas@rutgers.edu){style="color: #cc0033;" .test}
+
+[{{< fa brands github size=5x >}}](https://www.github.com/jvcasillas){style="color: #cc0033;"}
+
+[{{< ai osf size=5x >}}](https://osf.io/4fs2x/){style="color: #cc0033;"}
+
+[{{< ai orcid size=5x >}}](https://orcid.org/0000-0001-8735-9910){style="color: #cc0033;"}
+
+[{{< ai researchgate size=5x >}}](https://www.researchgate.net/profile/Joseph_Casillas){style="color: #cc0033;"}
+
+[{{< ai google-scholar size=5x >}}](https://scholar.google.com/citations?user=6sd7cVAAAAAJ&amp;hl){style="color: #cc0033;"}
+
+[{{< fa brands twitter size=5x >}}](https://www.twitter.com/jvcasill){style="color: #cc0033;"}
+
+[{{< fa brands bluesky size=5x >}}](https://bsky.app/profile/casillas.bsky.social){style="color: #cc0033;"}
+
