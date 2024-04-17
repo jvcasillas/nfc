@@ -1,29 +1,115 @@
 ---
 format: html
+execute: 
+  echo: false
+  message: false
+  warning: false
 include-in-header:
   - text: |
       <style>
       p {
         text-align: center;
       }
+      .zoom {
+        border: none;
+        margin: 0 auto;
+        transition: all .4s ease-in-out;
+      }
+      .zoom:hover {
+        -webkit-transform: scale(1.1);
+        -moz-transform: scale(1.1);
+        -o-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+        transform: scale(1.1);
+      }
       </style>
 ---
 
-[![](./img/branding.002.png){width="50%" fig-align="center"}](https://www.jvcasillas.com)
+```{r}
 
-[{{< fa envelope size=5x >}}](mailto:joseph.casillas@rutgers.edu){style="color: #cc0033;" .test}
+library("glue")
+library("purrr")
+library("tidyr")
+library("tibble")
+library("dplyr")
 
-[{{< fa brands github size=5x >}}](https://www.github.com/jvcasillas){style="color: #cc0033;"}
+icon_builder <- function(lt, size = "5x", color = "#cc0033") {
+  
+  info <- enframe(lt, name = 'the_icon') |> 
+    unnest(cols = "value") |> 
+    mutate(size = size, color = color)
+  
+  open <- "<div class='zoom' align='center'>"
+  close <- "</div>"
+  icn <- glue("[{{< {{{info$icon_type}}} {{{info$icon}}} size={{{info$size}}} title='{{{info$title}}}' >}}]", 
+                     .open = "{{{", .close = "}}}")
+  lnk <- glue("({info$link})")
+  xtr <- glue("{style='color: {{{info$color}}};' .test}", .open = "{{{", .close = "}}}")
+  cat(paste0(open, "\n", icn, lnk, xtr, "\n", close, "\n"))
+}
+```
 
-[{{< ai osf size=5x >}}](https://osf.io/4fs2x/){style="color: #cc0033;"}
+```{r}
+icons <- list(
 
-[{{< ai orcid size=5x >}}](https://orcid.org/0000-0001-8735-9910){style="color: #cc0033;"}
+  mail = tibble(
+    icon_type = "fa", 
+    icon = "envelope", 
+    link = "mailto:joseph.casillas@rutgers.edu", 
+    title = "Maile me"
+  ), 
+  github = tibble(
+    icon_type = "fa brands", 
+    icon = "github", 
+    link = "https://www.github.com/jvcasillas", 
+    title = "My github account"
+  ), 
+  osf = tibble(
+    icon_type = "ai", 
+    icon = "osf", 
+    link = "https://osf.io/4fs2x/", 
+    title = "My OSF repositories"
+  ), 
+  orcid = tibble(
+    icon_type = "ai", 
+    icon = "orcid", 
+    link = "https://orcid.org/0000-0001-8735-9910", 
+    title = "My ORCID"
+  ), 
+  rg = tibble(
+    icon_type = "ai", 
+    icon = "researchgate", 
+    link = "https://www.researchgate.net/profile/Joseph_Casillas", 
+    title = "My reasearchgate profile"
+  ), 
+  scholar = tibble(
+    icon_type = "ai", 
+    icon = "google-scholar", 
+    link = "https://scholar.google.com/citations?user=6sd7cVAAAAAJ&amp;hl", 
+    title = "My google scholar profile"
+  ), 
+  twitter = tibble(
+    icon_type = "fa brands", 
+    icon = "twitter", 
+    link = "https://www.twitter.com/jvcasill", 
+    title = "Twitter"
+  ),
+  bluesky = tibble(
+    icon_type = "fa brands", 
+    icon = "bluesky", 
+    link = "https://bsky.app/profile/casillas.bsky.social", 
+    title = "Bluesky"
+  )
+)
 
-[{{< ai researchgate size=5x >}}](https://www.researchgate.net/profile/Joseph_Casillas){style="color: #cc0033;"}
+```
 
-[{{< ai google-scholar size=5x >}}](https://scholar.google.com/citations?user=6sd7cVAAAAAJ&amp;hl){style="color: #cc0033;"}
+[![](./img/branding.002.png){width='30%' fig-align='center'}](https://www.jvcasillas.com)
+[![](./img/rap-group.png){width='30%' fig-align='center'}](https://wwww.rap-group.jvcasillas.com)
 
-[{{< fa brands twitter size=5x >}}](https://www.twitter.com/jvcasill){style="color: #cc0033;"}
 
-[{{< fa brands bluesky size=5x >}}](https://bsky.app/profile/casillas.bsky.social){style="color: #cc0033;"}
+```{r}
+#| results: 'asis'
+icon_builder(icons, size = "3x", color = "#cc0033")
+```
 
