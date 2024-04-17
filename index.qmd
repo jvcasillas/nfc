@@ -16,11 +16,11 @@ include-in-header:
         transition: all .4s ease-in-out;
       }
       .zoom:hover {
-        -webkit-transform: scale(1.1);
-        -moz-transform: scale(1.1);
-        -o-transform: scale(1.1);
-        -ms-transform: scale(1.1);
-        transform: scale(1.1);
+        -webkit-transform: scale(1.2);
+        -moz-transform: scale(1.2);
+        -o-transform: scale(1.2);
+        -ms-transform: scale(1.2);
+        transform: scale(1.2);
       }
       </style>
 ---
@@ -104,12 +104,16 @@ icons <- list(
 
 ```
 
+<div class='zoom' align='center'>
 [![](./img/branding.002.png){width='30%' fig-align='center'}](https://www.jvcasillas.com)
-[![](./img/rap-group.png){width='30%' fig-align='center'}](https://wwww.rap-group.jvcasillas.com)
+</div>
 
+<div class='zoom' align='center'>
+[![](./img/rap-group.png){width='80' fig-align='center'}](https://wwww.rap-group.jvcasillas.com)
+</div>
 
 ```{r}
 #| results: 'asis'
-icon_builder(icons, size = "3x", color = "#cc0033")
+icon_builder(icons, size = "4x", color = "#cc0033")
 ```
 
