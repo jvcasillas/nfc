@@ -26,7 +26,7 @@ include-in-header:
 ---
 
 ```{r}
-
+#| label: setup
 library("glue")
 library("purrr")
 library("tidyr")
@@ -50,6 +50,7 @@ icon_builder <- function(lt, size = "5x", color = "#cc0033") {
 ```
 
 ```{r}
+#| label: generate-list
 icons <- list(
 
   mail = tibble(
@@ -105,7 +106,7 @@ icons <- list(
 ```
 
 <div class='zoom' align='center'>
-[![](./img/branding.002.png){width='30%' fig-align='center'}](https://www.jvcasillas.com)
+[![](./img/branding.002.png){width='40%' fig-align='center'}](https://www.jvcasillas.com)
 </div>
 
 <div class='zoom' align='center'>
@@ -113,6 +114,7 @@ icons <- list(
 </div>
 
 ```{r}
+#| label: print-icons
 #| results: 'asis'
 icon_builder(icons, size = "4x", color = "#cc0033")
 ```
